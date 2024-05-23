@@ -4,17 +4,12 @@
 # the text we want as an input. Change these strings to run your own example.
 ######################################################################################################
 
-from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
-from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
-from clarifai_grpc.grpc.api.status import status_code_pb2
-import streamlit as st
-
 # Your PAT (Personal Access Token) can be found in the Account's Security section
-PAT = st.secrets.PAT
+PAT = '5e73b6f7797e4ec8815cae973adb6da9'
 # Specify the correct user_id/app_id pairings
 # Since you're making inferences outside your app's scope
-USER_ID = st.secrets.USER_ID
-APP_ID = st.secrets.APP_ID
+USER_ID = 'idaniyalahmad'
+APP_ID = 'Llama2Tutorial'
 # Change these to whatever model and text URL you want to use
 WORKFLOW_ID = 'Llama2TutorialWorkflow'
 TEXT_FILE_URL = 'https://samples.clarifai.com/negative_sentence_12.txt'
@@ -65,8 +60,5 @@ for output in results.outputs:
     for concept in output.data.concepts:
         print("	%s %.2f" % (concept.name, concept.value))
 
-    response += output.data.text.raw + "\n"
-    
 # Uncomment this line to print the full Response JSON
 #print(results)
-print(response)
